@@ -1019,3 +1019,152 @@ figure.instagram-item img.insta-image {
 .post-navigation:focus svg {
     fill: var(--primary-color);
 }
+/* 14. Login form
+--------------------------------------------------------------*/
+.login-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #e2e2e2, #72AEC8);
+}
+.container{
+  margin: 0 15px;
+}
+.form-box{
+  width: 100%;
+  max-width: 450px;
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h2{
+  font-size: 34px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+input{
+  width: 100%;
+  padding: 12px;
+  background: #eee;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+}
+button{
+  width: 100%;
+  padding: 12px;
+  background: #72AEC8;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 20px;
+  transition: 0.5s;
+}
+button:hover {
+  background: #72AEC8;
+}
+p{
+  font-size: 14.5px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+p a {
+  color: #72AEC8;
+  text-decoration: none;
+}
+p a:hover{
+  text-decoration: none;
+}
+/* 15. Register form
+--------------------------------------------------------------*/
+.register-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #e2e2e2, #72AEC8);
+}
+.container{
+  margin: 0 15px;
+}
+.form-box{
+  width: 100%;
+  max-width: 450px;
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h2{
+  font-size: 34px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+input,
+select{
+  width: 100%;
+  padding: 12px;
+  background: #eee;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+}
+button{
+  width: 100%;
+  padding: 12px;
+  background: #72AEC8;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 20px;
+  transition: 0.5s;
+}
+button:hover {
+  background: #6884d3;
+}
+p{
+  font-size: 14.5px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+p a {
+  color: #72AEC8;
+  text-decoration: none;
+}
+p a:hover{
+  text-decoration: none;
+}
+/* 16. Thankyou message
+--------------------------------------------------------------*/
+.thankyou-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.message{
+  width: 500px;
+  height: 300px;
+  padding: 15px;
+  background-color: #72AEC8;
+  color: white;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+.text{
+  font-size: 20px;
+}
