@@ -1028,8 +1028,11 @@ figure.instagram-item img.insta-image {
   min-height: 100vh;
   background: linear-gradient(to right, #e2e2e2, #72AEC8);
 }
-.container{
-  margin: 0 15px;
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 .form-box{
   width: 100%;
@@ -1092,8 +1095,11 @@ p a:hover{
   min-height: 100vh;
   background: linear-gradient(to right, #e2e2e2, #72AEC8);
 }
-.container{
-  margin: 0 15px;
+.register-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh
 }
 .form-box{
   width: 100%;
@@ -1167,4 +1173,45 @@ p a:hover{
 }
 .text{
   font-size: 20px;
+}
+/* 16. Account page
+--------------------------------------------------------------*/
+.account {
+    display: flex;
+    justify-content: flex-start;
+    height: 100vh;
+    margin: 0;
+    padding-left: 40px; 
+    background: linear-gradient(to right, #e2e2e2, #72AEC8);
+    align-items: center;
+}
+.account-container {
+    text-align: left; 
+    padding: 20px;
+    border-radius: 10px;
+}
+.account-h1{
+  font-size: 50px;
+  margin-bottom: 40px;
+}
+.account-p{
+  font-size: 25px;
+  margin-bottom: 50px;
+}
+
+.account-h1, .account-p {
+    text-align: left; 
+}
+.account-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 50px;
+}
+.account-btn:hover {
+    background-color: #0056b3;
 }

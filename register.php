@@ -1,42 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="../style.css">
-</head>
-<body>
-    <div class="register-page">
-        <div class='container'>
-            <div class="form-box" id="register-form">
-                <form action="thankyou.php" method="POST">
-                    <h2>Register</h2>
-                    <input type="text" name="name" placeholder="Name" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                    <input type="password" name="password" placeholder="Password" required>
-                    <select name="role" required>
-                        <option value="">--Select Role--</option>
-                        <option value="user">User</option>
-                        <option value="admin">Admin</option>
-                    </select>
-                    <button type="submit" name="Login">Login</button>
-                    <p>Already have an account? <a href="login.php">Login</a></p>
-                </form>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+
 <?php
 session_start();
-require_once '../classes/Database.php';
-require_once '../classes/User.php';
+require_once 'classes/Database.php';
+require_once 'classes/User.php';
 
 $db = new Database();
 $conn = $db->connect();
 
 $user = new User($conn);
+
+if (isset($_SESSION['logged_in'])) {
+    header('Location: account.php');
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Register'])) {
     $name = trim($_POST['name']);
@@ -81,11 +57,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Register'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php
+      include 'templates/header.php'
+     ?>
     <div class="register-page">
-        <div class='container'>
+        <div class='register-container'>
             <div class="form-box" id="register-form">
                 <form action="register.php" method="POST">
                     <h2>Register</h2>
