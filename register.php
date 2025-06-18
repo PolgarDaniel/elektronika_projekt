@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Register'])) {
         $_SESSION['user_email'] = $email;
         $_SESSION['user_name'] = $name;
         $_SESSION['logged_in'] = true;
-        header('Location: thankyou.php');
+        header('Location: account.php');
         exit;
     } else {
         header('Location: register.php?error=Could not create account');
