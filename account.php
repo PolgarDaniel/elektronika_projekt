@@ -1,15 +1,16 @@
 <?php 
 session_start();
 
+// Ak uzivatel nie je prihlaseny, presmeruje sa na prihlasovaciu stranku
 if (!isset($_SESSION['logged_in'])) {
     header('Location: login.php');
     exit;
 }
-
+// Ak je v URL parametroch poziadavka na odhlasenie
 if (isset($_GET['logout'])) {
-    session_unset();
-    session_destroy();
-    header('Location: login.php?message=logged out successfully');
+    session_unset(); // Ak je v URL parametroch poziadavka na odhlasenie
+    session_destroy();// Ukonci session
+    header('Location: login.php?message=logged out successfully');// Presmeruje na login s oznamom
     exit;
 }
 ?>

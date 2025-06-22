@@ -1,43 +1,56 @@
 <?php
+// Nacitanie potrebnych suborov
 require_once 'classes/Database.php';
 require_once 'classes/User.php';
 
+// Vytvorenie pripojenia k databaze a instancie triedy User
 $db = new Database();
 $conn = $db->connect();
 $user = new User($conn);
 
+// Inicializacia premennych
 $name = $email = $password = $role = "";
 $errorMessage = $successMessage = "";
 
+// Ak bol formular odoslany metodou POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Nacitanie a uprava vstupnych dat
     $name = trim($_POST["user_name"]);
     $email = trim($_POST["user_email"]);
     $password = trim($_POST["user_password"]);
     $role = $_POST["user_role"];
 
     do {
+        // Overenie, ci su vsetky polia vyplnene
         if (empty($name) || empty($email) || empty($password) || empty($role)) {
             $errorMessage = "All fields are required.";
             break;
         }
 
+        // Overenie, ci uzivatel s tymto emailom uz existuje
         if ($user->userExists($email)) {
             $errorMessage = "User with this email already exists.";
             break;
         }
 
+        // Pokus o registraciu uzivatela
         if ($user->register($name, $email, $password, $role)) {
             $successMessage = "User registered successfully.";
+            
+            // Vycistenie poli po uspesnej registracii
             $name = $email = $password = $role = "";
+
+            // Presmerovanie spat na admin stranku
             header("Location: admin.php");
             exit;
         } else {
             $errorMessage = "Error while adding the user.";
         }
 
-    } while (false);
+    } while (false); // Pouzitie do-while kvoli elegantnemu preruseniu pri chybe
 }
 ?>
+
 
 
 <!DOCTYPE html>

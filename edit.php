@@ -9,23 +9,33 @@ $user = new User($conn);
 $errorMessage = "";
 $successMessage = "";
 
+// Ak je poziadavka GET, nacitaj data pouzivatela podla ID a zobraz vo formulari
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    // Ak ID nie je nastavene alebo prazdne, presmeruj naspat na admin.php
     if (!isset($_GET['id']) || empty($_GET['id'])) {
         header("Location: admin.php");
         exit;
     }
+
+    // Bezpecne preved ID na cele cislo
     $id = intval($_GET['id']);
+
+    // Nacitaj data pouzivatela z DB
     $userData = $user->getUserById($id);
+
+    // Ak pouzivatel neexistuje, presmeruj naspat
     if (!$userData) {
         header("Location: admin.php");
         exit;
     }
 
+    // Napln premenne datami pre vyplnenie formulara
     $name = $userData['user_name'];
     $email = $userData['user_email'];
     $role = $userData['user_role'];
-    $password = ""; 
+    $password = ""; // Heslo sa nezobrazuje
 
+// Ak je poziadavka POST, skus aktualizovat pouzivatela
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $id = intval($_POST['user_id']);
@@ -35,16 +45,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $role = $_POST['user_role'];
 
     do {
+        // Overenie povinnych poli (okrem hesla)
         if (empty($id) || empty($name) || empty($email) || empty($role)) {
             $errorMessage = "All fields except password are required.";
             break;
         }
 
+        // Skus aktualizovat pouzivatela, ak neuspesne nastav chybu a prerus cyklus
         if (!$user->updateUser($id, $name, $email, $password, $role)) {
             $errorMessage = "Failed to update user.";
             break;
         }
 
+        // Ak uspesne, nastav uspesnu spravu a presmeruj na admin.php
         $successMessage = "User updated successfully!";
         header("Location: admin.php");
         exit;
@@ -52,6 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     } while (false);
 }
 ?>
+
 
 
 <!DOCTYPE html>
